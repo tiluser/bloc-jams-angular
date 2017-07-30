@@ -1,4 +1,4 @@
-(funtion() {
+(function() {
     function Fixtures() {
         var Fixtures = {};
 
