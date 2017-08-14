@@ -87,6 +87,11 @@
   top: 0.5rem;
 }
 
+.seek-control .current-volume {
+  position: absolute;
+  top: 0.5rem;
+}
+
 .seek-control .total-time {
   position: abolute;
   right: 0;
