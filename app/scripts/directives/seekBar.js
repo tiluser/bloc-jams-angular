@@ -14,7 +14,7 @@
             replace: true,
             restrict: 'E',
             scope: {
-                onchange: '&'
+                onChange: '&'
             },
             link: function (scope, element, attributes) {
                 // directive logic to return
@@ -50,6 +50,7 @@
                     var percent = calculatePercent(seekBar, event);
                     scope.value = percent * scope.max;
                     notifyOnChange(scope.value);
+                    console.log("clicked seek bar");
                 };
 
                 scope.trackThumb = function () {
