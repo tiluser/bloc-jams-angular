@@ -76,7 +76,7 @@
           * @desc Current playback time (in seconds) of currently playing song
           * @type {Number}
           */
-          SongPlayer.currentTime = 80;
+          SongPlayer.currentTime = null;
 
           /**
           * @function play
@@ -102,6 +102,7 @@
           * @param {Object} song
           */
           SongPlayer.pause = function(song) {
+               song = song || SongPlayer.currentSong;
                currentBuzzObject.pause();
                song.playing = false;
            };
