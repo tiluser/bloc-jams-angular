@@ -161,6 +161,7 @@
             */
 
             SongPlayer.volume = null;
+            SongPlayer.savedVolume = null;
 
             /**
              * @function setVolume
@@ -172,6 +173,24 @@
                  if (currentBuzzObject) {
                      currentBuzzObject.setVolume(volume);
                      SongPlayer.volume = volume;
+                 }
+             };
+
+             /**
+              * @function toggleMute
+              * @desc If savedVolume is null, saves to savedVolume and mutes. Otherwise unmutes and sets savedVolume to null.
+              * @param
+              */
+             SongPlayer.toggleMute = function () {
+                 if (currentBuzzObject) {
+                     if (SongPlayer.savedVolume === null) {
+                         SongPlayer.savedVolume =  currentBuzzObject.getVolume();
+                         SongPlayer.setVolume(0);
+                     }
+                     else {
+                        SongPlayer.setVolume(SongPlayer.savedVolume);
+                        SongPlayer.savedVolume = null;
+                     }
                  }
              };
 

@@ -35,6 +35,9 @@
               <div class="thumb"></div>
             </seek-bar>
             <div class="current-volume">{{ playerBar.songPlayer.volume }}</div>
+            <div class="mute-unmute">
+              <button style="font-size:24px" ng-click="playerBar.songPlayer.toggleMute()")>Mute/unmute<i class="material-icons">volume_off</i></button>
+            </div>
         </div>
     </div>
 </section>
