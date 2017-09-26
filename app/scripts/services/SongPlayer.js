@@ -29,10 +29,21 @@
                   });
               });
 
+              // If song is finished, goes to the next song automatically. If it's the last
+              // song, loops back to the first one.
               currentBuzzObject.bind('timeupdate', function () {
                   $rootScope.$apply(function () {
                       SongPlayer.currentTime = currentBuzzObject.getTime();
-                    //  console.log("Time is now " + SongPlayer.currentTime);
+                      if (SongPlayer.currentTime >= song.duration) {
+                          var currentSongIndex = getSongIndex(song);
+                          currentSongIndex++;
+                          if (currentSongIndex >= currentAlbum.songs.length) {
+                              currentSongIndex = 0;
+                          }
+                          song = currentAlbum.songs[currentSongIndex];
+                          setSong(song);
+                          playSong(song)
+                      }
                   });
               });
               SongPlayer.currentSong = song;
@@ -89,6 +100,7 @@
               if (SongPlayer.currentSong !== song) {
                   setSong(song);
                   playSong(song);
+                  console.log("Song duration is " + song.duration);
               }
               else if (SongPlayer.currentSong === song) {
                   if (currentBuzzObject.isPaused()) {
