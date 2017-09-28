@@ -1,0 +1,43 @@
+<div class="container" ng-controller="AddSongsModalCtrl as mdl">
+  <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Add song</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{ mdl.title }}</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            <!--
+            Enter name of song to add:
+            <input type ="text"  placeholder="{{ mdl.songPlaceHolder }}" data-ng-model="mdl.newSong" />
+          -->
+        <table class="album-view-song-list">
+            <tr class="album-view-song-item" ng-mouseover="hovered = true" ng-mouseleave="hovered = false" ng-repeat="song in mdl.generalPool.songs">
+              <td class="song-item-number">
+                 <span ng-show="!hovered && !song.playing">{{ $index + 1 }}</span>
+                 <a class="album-song-button" ng-show="hovered && !song.playing" ng-click="album.songPlayer.play(song)"><span class="ion-play"></span></a>
+                 <a class="album-song-button" ng-show="song.playing" ng-click="album.songPlayer.pause(song)"><span class="ion-pause"></span></a>
+             </td>
+              <td class="song-item-title">{{ song.title }}</td>
+              <td class="song-item-duration">{{ song.duration | timecode }}</td>
+              <td><button style="font-size:10px" ng-click="addSong(mdl.generalPool.songs, $index)")>Add</button></td>
+            </tr>
+          </table>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-ng-click="mdl.add()">Add</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

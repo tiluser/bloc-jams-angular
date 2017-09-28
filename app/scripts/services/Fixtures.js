@@ -18,6 +18,20 @@
             ]
         };
 
+        var albumGeneralPool = {
+            title: "General Pool",
+            artist: "Any artist",
+            label: "General",
+            year: "1",
+            albumArtUrl: '/assets/images/album_covers/02.png',
+            songs: [
+                { title: 'The Fighter', duration: '161.71', audioUrl: '/assets/music/blue' },
+                { title: 'Amadeus', duration: '103.96', audioUrl: '/assets/music/green' },
+                { title: 'Fifth of Beethoven', duration: '268.45', audioUrl: '/assets/music/red' },
+            ]
+        };
+
+
         // Another example album
         var albumMarconi = {
             title: 'The Telephone',
@@ -36,6 +50,10 @@
 
         Fixtures.getAlbum = function () {
             return albumPicasso;
+        };
+
+        Fixtures.getGeneralPool = function () {
+            return albumGeneralPool;
         };
 
         Fixtures.getCollection = function (numberOfAlbums) {
