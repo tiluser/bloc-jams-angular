@@ -64,6 +64,18 @@
             return albums;
         };
 
+        Fixtures.isSongPresent = function (album, songName) {
+            if (album.songs.length === undefined) {
+                album.songs = [];    
+            }
+            for (var i = 0; i < album.songs.length; i++) {
+                if (album.songs[i].title === songName) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
         return Fixtures;
     }
 
